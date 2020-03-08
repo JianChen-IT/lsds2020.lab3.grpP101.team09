@@ -8,13 +8,14 @@ import org.apache.spark.streaming.twitter.TwitterUtils;
 import twitter4j.Status;
 import twitter4j.auth.OAuthAuthorization;
 import upf.edu.util.ConfigUtils;
-
 import java.io.IOException;
 
 public class TwitterStreamingExample {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         String propertiesFile = args[0];
+        System.out.println(args[0]);
+
         OAuthAuthorization auth = ConfigUtils.getAuthorizationFromFileProperties(propertiesFile);
 
         SparkConf conf = new SparkConf().setAppName("Real-time Twitter Example");
@@ -31,5 +32,6 @@ public class TwitterStreamingExample {
         jsc.start();
         jsc.awaitTermination();
     }
+
 
 }

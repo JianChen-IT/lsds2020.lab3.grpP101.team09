@@ -1,0 +1,4 @@
+consumer.key = ttDqcfPGDcb7btDikhJSDQnCf
+consumer.secret = g7uvyE8opoUfl9hjHFpO1Ex5dNmMFKdHts8nODaOcms2FsUVPz
+access.token = 1222829174802538496-xQYi6ZnBIbIzoWyahIi3nZ02jXFNG8
+access.secret = t8jInqPWEti2Uo2b2zg5bG5RrQtZtwvC1ZF5PDLXK0lZM
