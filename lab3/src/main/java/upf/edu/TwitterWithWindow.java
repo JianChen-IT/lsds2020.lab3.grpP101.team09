@@ -8,6 +8,7 @@ import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.twitter.TwitterUtils;
+import scala.Tuple2;
 import twitter4j.Status;
 import twitter4j.auth.OAuthAuthorization;
 import upf.edu.util.ConfigUtils;
@@ -17,8 +18,8 @@ import java.io.IOException;
 
 public class TwitterWithWindow {
     public static void main(String[] args) throws IOException, InterruptedException {
-        String propertiesFile = args[0];
-        String input = args[1];
+        String propertiesFile = args[0]; //tweet.txt (credentials)
+        String input = args[1]; //map.tsv
         OAuthAuthorization auth = ConfigUtils.getAuthorizationFromFileProperties(propertiesFile);
 
         SparkConf conf = new SparkConf().setAppName("Real-time Twitter with windows");
@@ -35,10 +36,14 @@ public class TwitterWithWindow {
                 .buildLanguageMap(languageMapLines);
 
         // create an initial stream that counts language within the batch (as in the previous exercise)
-        final JavaPairDStream<String, Integer> languageCountStream = null; // IMPLEMENT ME
+        final JavaPairDStream<String, Integer> languageCountStream = stream.mapToPair(x -> new Tuple2<>(x.getLang(),1))
+                .transformToPair(t->t.join(languageMap))
+                .mapToPair(y-> new Tuple2<String, Integer>(y._2._2, y._2._1))
+                .reduceByKey((a,b) -> a + b);; // IMPLEMENT ME
 
         // Prepare output within the batch
-        final JavaPairDStream<Integer, String> languageBatchByCount = null; // IMPLEMENT ME
+        final JavaPairDStream<Integer, String> languageBatchByCount = languageCountStream
+                .mapToPair(w-> new Tuple2<>(w._2,w._1)).transformToPair(x->x.sortByKey()); // IMPLEMENT ME
 
         // Prepare output within the window
         final JavaPairDStream<Integer, String> languageWindowByCount = null; // IMPLEMENT ME

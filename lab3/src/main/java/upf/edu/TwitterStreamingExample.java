@@ -20,6 +20,7 @@ public class TwitterStreamingExample {
 
         SparkConf conf = new SparkConf().setAppName("Real-time Twitter Example");
         JavaStreamingContext jsc = new JavaStreamingContext(conf, Durations.seconds(10));
+
         // This is needed by spark to write down temporary data
         jsc.checkpoint("/tmp/checkpoint");
 
@@ -31,6 +32,7 @@ public class TwitterStreamingExample {
         // Start the application and wait for termination signal
         jsc.start();
         jsc.awaitTermination();
+
     }
 
 
