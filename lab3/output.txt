@@ -1,0 +1,95 @@
+
+Exercise 1
+
+Input: spark-submit --class upf.edu.TwitterStateless --conf spark.driver.extraJavaOptions=-Dlog4j.configuration=file:////home/carlos/Desktop/UNIVERSIDAD/LDS/lsds2020.lab3.grpP101.team09/lab3/log4j.properties target/lab3-1.0-SNAPSHOT.jar twitter.txt src/main/resources/map.tsv
+
+-------------------------------------------
+Time: 1583926080000 ms
+-------------------------------------------
+(Arabic,17)
+(Persian,1)
+(Korean,23)
+(Italian,2)
+(English,82)
+(Thai,41)
+(Turkish,12)
+(Romanian; Moldavian; Moldovan,1)
+(Estonian,1)
+(Lithuanian,1)
+...
+
+-------------------------------------------
+Time: 1583926100000 ms
+-------------------------------------------
+(Arabic,43)
+(Ukrainian,1)
+(Korean,60)
+(Persian,3)
+(Italian,10)
+(English,218)
+(Thai,71)
+(Turkish,18)
+(Greek, Modern (1453-),1)
+(Chinese,3)
+...
+
+-------------------------------------------
+Time: 1583926120000 ms
+-------------------------------------------
+(Arabic,42)
+(Persian,5)
+(Korean,62)
+(Italian,9)
+(English,234)
+(Thai,72)
+(Turkish,23)
+(Greek, Modern (1453-),1)
+(Romanian; Moldavian; Moldovan,1)
+(Estonian,2)
+...
+
+-------------------------------------------
+Time: 1583926140000 ms
+-------------------------------------------
+(Arabic,49)
+(Ukrainian,1)
+(Persian,3)
+(Korean,44)
+(Italian,6)
+(English,229)
+(Thai,83)
+(Turkish,23)
+(Chinese,3)
+(Gujarati,1)
+...
+
+-------------------------------------------
+Time: 1583926160000 ms
+-------------------------------------------
+(Arabic,51)
+(Persian,6)
+(Korean,61)
+(Italian,8)
+(English,215)
+(Thai,67)
+(Turkish,21)
+(Greek, Modern (1453-),3)
+(Estonian,4)
+(Chinese,3)
+...
+
+-------------------------------------------
+Time: 1583926180000 ms
+-------------------------------------------
+(Arabic,48)
+(Persian,2)
+(Korean,62)
+(Italian,7)
+(English,228)
+(Thai,79)
+(Turkish,14)
+(Estonian,1)
+(Lithuanian,1)
+(Chinese,9)
+...
+
