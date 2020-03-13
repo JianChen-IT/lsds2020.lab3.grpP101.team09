@@ -93,3 +93,40 @@ Time: 1583926180000 ms
 (Chinese,9)
 ...
 
+Exercise 2:
+
+spark-submit --class upf.edu.TwitterWithWindow --conf spark.driver.extraJavaOptions=-Dlog4j.configuration=file:////home/carlos/Desktop/UNIVERSIDAD/LDS/lsds2020.lab3.grpP101.team09/lab3/log4j.properties target/lab3-1.0-SNAPSHOT.jar twitter.txt src/main/resources/map.tsv
+
+First
+-------------------------------------------
+Time: 1584099620000 ms
+-------------------------------------------
+(135,English)
+(133,Japanese)
+(32,Korean)
+(29,Thai)
+(27,Arabic)
+(24,Portuguese)
+(17,Spanish; Castilian)
+(14,French)
+(10,Turkish)
+(9,Tagalog)
+...
+
+
+Last
+-------------------------------------------
+Time: 1584099920000 ms
+-------------------------------------------
+(4148,Japanese)
+(4119,English)
+(1311,Thai)
+(1056,Spanish; Castilian)
+(970,Korean)
+(824,Portuguese)
+(765,Arabic)
+(423,French)
+(394,Tagalog)
+(346,Turkish)
+...
+

@@ -3,6 +3,7 @@ package upf.edu;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.streaming.Duration;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
@@ -39,19 +40,22 @@ public class TwitterWithWindow {
         final JavaPairDStream<String, Integer> languageCountStream = stream.mapToPair(x -> new Tuple2<>(x.getLang(),1))
                 .transformToPair(t->t.join(languageMap))
                 .mapToPair(y-> new Tuple2<String, Integer>(y._2._2, y._2._1))
-                .reduceByKey((a,b) -> a + b);; // IMPLEMENT ME
+                .reduceByKey((a,b) -> a + b); // IMPLEMENT ME
 
         // Prepare output within the batch
         final JavaPairDStream<Integer, String> languageBatchByCount = languageCountStream
-                .mapToPair(w-> new Tuple2<>(w._2,w._1)).transformToPair(x->x.sortByKey()); // IMPLEMENT ME
+                .mapToPair(w-> new Tuple2<>(w._2,w._1)).transformToPair(x->x.sortByKey(false)); // IMPLEMENT ME
 
         // Prepare output within the window
-        final JavaPairDStream<Integer, String> languageWindowByCount = null; // IMPLEMENT ME
+        final JavaPairDStream<Integer, String> languageWindowByCount = languageBatchByCount.window(Durations.seconds(300))
+                .mapToPair(y-> new Tuple2<>(y._2,y._1))
+                .reduceByKey((a,b)->a+b)
+                .mapToPair(z-> new Tuple2<>(z._2,z._1))
+                .transformToPair(a->a.sortByKey(false)); // IMPLEMENT ME
 
         // Print first 15 results for each one
         languageBatchByCount.print();
         languageWindowByCount.print();
-
         // Start the application and wait for termination signal
         jsc.start();
         jsc.awaitTermination();

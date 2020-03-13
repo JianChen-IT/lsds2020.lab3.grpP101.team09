@@ -1,8 +1,22 @@
 package upf.edu.storage;
 
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.client.builder.AwsClientBuilder;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Table;
+import org.apache.spark.SparkConf;
+import org.apache.spark.streaming.Durations;
+import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
+import org.apache.spark.streaming.api.java.JavaStreamingContext;
+import org.apache.spark.streaming.twitter.TwitterUtils;
 import twitter4j.Status;
+import twitter4j.auth.OAuthAuthorization;
 import upf.edu.model.HashTagCount;
+import upf.edu.util.ConfigUtils;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
@@ -11,8 +25,8 @@ public class DynamoHashTagRepository implements IHashtagRepository, Serializable
   @Override
   public void write(Status tweet) {
 
-    final static String endpoint = "dynamodb.us-east-1.amazonaws.com";
-    final static String region = "us-east-1";
+    final String endpoint = "dynamodb.us-east-1.amazonaws.com";
+    final String region = "us-east-1";
 
     final AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
             .withEndpointConfiguration(
@@ -20,12 +34,12 @@ public class DynamoHashTagRepository implements IHashtagRepository, Serializable
             ).withCredentials(new ProfileCredentialsProvider("upf"))
             .build();
     final DynamoDB dynamoDB = new DynamoDB(client);
-    final Table dynamoDBTable = dynamoDB.getTable();
+    //final Table dynamoDBTable = dynamoDB.getTable();
   }
 
   @Override
   public List<HashTagCount> readTop10(String lang) {
-
+    return null;
   }
 
   public static void main(String[] args) throws InterruptedException, IOException {

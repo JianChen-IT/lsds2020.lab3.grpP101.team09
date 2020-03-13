@@ -1,4 +1,4 @@
 consumer.key = dIsgYyYzx9Ebah8G23uAIEzjh
 consumer.secret = FKDj77vdFi3CY8EiitxD60WitzCGFZBXc4Byi19dfrQUC2bbTA
-access.token = 1222829174802538496-VcTgqXKEjrESdhwB2G8N7r8SVz3fNA
-access.secret = xptgQkAFJGpkmLCxIoqHw50dU8zJtBbFBWY2TR6408GGK
+access.token = 1222829174802538496-CHKKkzo5wMWDT82dwxPkFxGvHySQWk
+access.secret = PVMYtMxXZj56y4KsmOksV4k2Z45KwUF6WvQ6Qex4nsStS
