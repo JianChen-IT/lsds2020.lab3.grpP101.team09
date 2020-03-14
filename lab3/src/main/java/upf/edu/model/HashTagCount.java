@@ -14,7 +14,12 @@ public final class HashTagCount {
     this.lang = lang;
     this.count = count;
   }
-
+  public Long get_count(){
+    return this.count;
+  }
+  public String get_hashtag(){
+    return this.hashTag;
+  }
   @Override
   public String toString() {
     return gson.toJson(this);
