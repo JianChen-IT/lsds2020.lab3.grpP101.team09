@@ -144,7 +144,7 @@ Time: 1584099920000 ms
 **Exercise 5**
 
 <p align = justify>We chose the japanese language, and as there was no specification we interpreted the problem counting the tweets and the retweets from each user.
-The numbers are not very high, because the program started to counting at the time we executed the program. This is the result after executing the program 10min.</p>
+The numbers are not very high, because the program started to count at the time we executed the program. This is the result after executing the program 10 minutes.</p>
 
 ``` 
 -------------------------------------------
