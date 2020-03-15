@@ -6,6 +6,7 @@
 
 
 **Exercise 3**
+
 ``` 
 -------------------------------------------
 Time: 1583926080000 ms
@@ -97,11 +98,13 @@ Time: 1583926180000 ms
 (Chinese,9)
 ...
 ``` 
+
 **Exercise 4**
 
 <p align = justify>Here we only include the first window and the last window to avoid repetitive information.</p>
 
 First window
+
 ``` 
 -------------------------------------------
 Time: 1584099620000 ms
@@ -120,6 +123,7 @@ Time: 1584099620000 ms
 ``` 
 
 Last window after 5 minutes
+
 ``` 
 -------------------------------------------
 Time: 1584099920000 ms
@@ -141,6 +145,7 @@ Time: 1584099920000 ms
 
 <p align = justify>We chose the japanese language, and as there was no specification we interpreted the problem counting the tweets and the retweets from each user.
 The numbers are not very high, because the program started to counting at the time we executed the program. This is the result after executing the program 10min.</p>
+
 ``` 
 -------------------------------------------
 Time: 1584290080000 ms
@@ -171,6 +176,7 @@ Time: 1584290080000 ms
 
 <p align = justify>In the database we stored all the fields requested in the assignment. However, the associated tweet list instead of containing all the information of all tweets
 it only contains the tweet ID.</p>
+
 ``` 
 hashtag: #COVIDー19 count: 60
 hashtag: #Covid_19 count: 14
