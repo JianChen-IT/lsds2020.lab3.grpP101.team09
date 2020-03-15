@@ -3,7 +3,6 @@ package upf.edu;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.streaming.Duration;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
@@ -46,7 +45,7 @@ public class TwitterWithWindow {
         final JavaPairDStream<Integer, String> languageBatchByCount = languageCountStream
                 .mapToPair(w-> new Tuple2<>(w._2,w._1)).transformToPair(x->x.sortByKey(false)); // IMPLEMENT ME
 
-        // Prepare output within the window
+        // Prepare output within the window of 5 min
         final JavaPairDStream<Integer, String> languageWindowByCount = languageBatchByCount.window(Durations.seconds(300))
                 .mapToPair(y-> new Tuple2<>(y._2,y._1))
                 .reduceByKey((a,b)->a+b)

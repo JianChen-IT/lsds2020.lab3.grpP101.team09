@@ -1,7 +1,11 @@
+**Introduction**
 
-Exercise 1
+In this document, we will display all the results that we have obtained during the lab. In exercise 5, we will also attach how did we understand the problem, because we think that the statement is a bit ambiguous.
 
-Input: spark-submit --class upf.edu.TwitterStateless --conf spark.driver.extraJavaOptions=-Dlog4j.configuration=file:////home/carlos/Desktop/UNIVERSIDAD/LDS/lsds2020.lab3.grpP101.team09/lab3/log4j.properties target/lab3-1.0-SNAPSHOT.jar twitter.txt src/main/resources/map.tsv
+**RESULTS**
+
+
+**Exercise 3**
 
 -------------------------------------------
 Time: 1583926080000 ms
@@ -92,12 +96,11 @@ Time: 1583926180000 ms
 (Lithuanian,1)
 (Chinese,9)
 ...
+**Exercise 4**
 
-Exercise 2:
+Here we only include the first window and the last window to avoid repetitive information.
 
-spark-submit --class upf.edu.TwitterWithWindow --conf spark.driver.extraJavaOptions=-Dlog4j.configuration=file:////home/carlos/Desktop/UNIVERSIDAD/LDS/lsds2020.lab3.grpP101.team09/lab3/log4j.properties target/lab3-1.0-SNAPSHOT.jar twitter.txt src/main/resources/map.tsv
-
-First
+First window
 -------------------------------------------
 Time: 1584099620000 ms
 -------------------------------------------
@@ -114,7 +117,7 @@ Time: 1584099620000 ms
 ...
 
 
-Last
+Last window after 5 minutes
 -------------------------------------------
 Time: 1584099920000 ms
 -------------------------------------------
@@ -129,4 +132,51 @@ Time: 1584099920000 ms
 (394,Tagalog)
 (346,Turkish)
 ...
+
+**Exercise 5**
+
+We chose the japanese language, and as there was no specification we interpreted the problem counting the tweets and the retweets from each user.
+The numbers are not very high, because the program started to counting at the time we executed the program.
+-------------------------------------------
+Time: 1584290080000 ms
+-------------------------------------------
+(8,kanro_pr)
+(6,Qoo10_Shopping)
+(5,Man37285771)
+(4,baberinko)
+(4,kanro_pure)
+(4,tocotocon8931)
+(3,msunmr)
+(3,lilacnerine2)
+(3,musubimeyui)
+(3,IdolClubAnalyst)
+(3,mk7ba)
+(3,nyannyan_231)
+(3,wim1179)
+(3,yukikaze1964)
+(3,Euph09ria)
+(3,Napooo10)
+(3,_at_hash_per_)
+(3,mirokun_love)
+(3,kentomo1414)
+(3,kai_karasume)
+...
+
+**Exercise 6**
+
+In the database we stored all the fields requested in the assignment. However, the associated tweet list instead of containing all the information of all tweets
+it only contains the tweet ID.
+
+hashtag: #COVIDー19 count: 60
+hashtag: #Covid_19 count: 14
+hashtag: #ÚltimaHora count: 7
+hashtag: #ÚLTIMAHORA count: 4
+hashtag: #DirectoAcademia14M count: 4
+hashtag: #CODVID19 count: 4
+hashtag: #Cuba count: 4
+hashtag: #quedateEnTuCasa count: 4
+hashtag: #coronaviruscolombia count: 3
+hashtag: #Coronavirus, count: 3
+
+
 

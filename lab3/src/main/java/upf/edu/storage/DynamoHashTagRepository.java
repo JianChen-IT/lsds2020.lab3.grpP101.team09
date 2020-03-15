@@ -2,27 +2,11 @@ package upf.edu.storage;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
-import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
-import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.*;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.streaming.Durations;
-import org.apache.spark.streaming.api.java.JavaDStream;
-import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
-import org.apache.spark.streaming.api.java.JavaStreamingContext;
-import org.apache.spark.streaming.twitter.TwitterUtils;
 import twitter4j.Status;
-import twitter4j.auth.OAuthAuthorization;
 import upf.edu.model.HashTagCount;
-import upf.edu.util.ConfigUtils;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -55,8 +39,12 @@ public class DynamoHashTagRepository implements IHashtagRepository, Serializable
     //----------------------WRITING-----------------
     String[] text = tweet.getText().split(" ");
     for(int i = 0; i < text.length;i++) {
+      /*Conditional retrieve the hashtags from the text*/
       if (text[i].startsWith("#")) {
         if(tweet.getLang()!=null) {
+          /*Putting or updating the information of the tweet that uses a determined hashtag.
+          * As required, we safe the language, a counter and the tweet that uses the hashtag.
+          * We safe the tweet ID instead of the whole tweet.*/
           Map<String,AttributeValue> key =  new HashMap<>();
           key.put("hashtag", new AttributeValue(text[i]));
 
@@ -101,12 +89,14 @@ public class DynamoHashTagRepository implements IHashtagRepository, Serializable
             .build();
     //----------------------------------------------
 
+    /*Getting all the records of the database*/
     ScanRequest scanRequest = new ScanRequest()
             .withTableName(output_table);
 
     ScanResult result = dynamoDB.scan(scanRequest);
     List <Map<String,AttributeValue>> all_hashtags = result.getItems();
     List <HashTagCount> hashtags_counts = new ArrayList<>();
+    /*For loop to store only the hashtags used in the tweets of a given input language*/
     for (Map<String, AttributeValue> item : all_hashtags){
       if(lang.equals(item.get("lang").getS())) {
         hashtags_counts.add(new HashTagCount(item.get("hashtag").getS(), item.get("lang").getS(), Long.valueOf(item.get("accumulator").getN())));

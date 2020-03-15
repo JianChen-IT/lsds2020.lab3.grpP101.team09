@@ -14,6 +14,7 @@ public final class HashTagCount {
     this.lang = lang;
     this.count = count;
   }
+  /*Getters used for getting the top 10 hashtags*/
   public Long get_count(){
     return this.count;
   }

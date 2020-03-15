@@ -11,7 +11,7 @@ import twitter4j.auth.OAuthAuthorization;
 import upf.edu.util.ConfigUtils;
 import upf.edu.storage.DynamoHashTagRepository;
 import java.io.IOException;
-
+/*This function writes into the DynamoDB database all the hashtags receive in streaming*/
 public class TwitterHashtags {
 
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -24,6 +24,7 @@ public class TwitterHashtags {
         jsc.checkpoint("/tmp/checkpoint");
 
         final JavaReceiverInputDStream<Status> stream = TwitterUtils.createStream(jsc, auth);
+        /*Creating the repository and storing all the received data into the database*/
         DynamoHashTagRepository my_db = new DynamoHashTagRepository();
         stream.foreachRDD(s->s.foreach(t->my_db.write(t)));
         stream.count().print();

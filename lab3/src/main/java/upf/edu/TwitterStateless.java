@@ -33,16 +33,15 @@ public class TwitterStateless {
                 .sparkContext()
                 .textFile(input);
 
-        // transform it to the expected RDD like in Lab 4
+        // transform it to the expected RDD
         final JavaPairRDD<String, String> languageMap = LanguageMapUtils
                 .buildLanguageMap(languageMapLines);
 
         // prepare the output
-        // IMPLEMENT ME
         //For every tweet we get its code language and from doing a join with the language mapping,
         // we obtain the number of tweets written in that language
-
-        final JavaPairDStream<String, Integer> languageRankStream = stream.mapToPair(x -> new Tuple2<>(x.getLang(),1))
+        final JavaPairDStream<String, Integer> languageRankStream = stream
+                .mapToPair(x -> new Tuple2<>(x.getLang(),1))
                 .transformToPair(t->t.join(languageMap))
                 .mapToPair(y-> new Tuple2<String, Integer>(y._2._2, y._2._1))
                 .reduceByKey((a,b) -> a + b);

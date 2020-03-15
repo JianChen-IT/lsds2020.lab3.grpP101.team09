@@ -9,27 +9,12 @@ import java.util.List;
 public class LanguageMapUtils {
 
     public static JavaPairRDD<String, String> buildLanguageMap(JavaRDD<String> lines) {
-
+        /*Class to read the provided tsv. It separates the words of each rows. Then, it filters out those rows that
+        * do not fits with the query. After that, we get the short version of the language, and the full language name*/
         JavaPairRDD<String,String> languages = lines.map(x->x.split("\t"))
                 .filter(t->t[1].length()>1).filter(h->h[1].length()<3)
-                .mapToPair(y-> new Tuple2<String,String>(y[1], y[2])).distinct();
-        //System.out.println(languages.take(5));
-
-        /*List<String[]> heu = languages.collect();
-        String[] ug = heu.get(3);
-        System.out.println("TESTIIIIIIIIIIING222222222:  " + ug[0].toString()+"  "+ ug[1].toString()+"  "+ ug[2].toString()+"  "+ ug[3].toString()+"  "+ ug[4].toString());
-        System.out.println("TESTIIIIIIIIIIING7777777777:  " + (ug[0].length()==3));
-        System.out.println("TESTIIIIIIIIIIING2feqewfihiwofw:  " + (ug[1].length()<1));*/
-
-        /*List<String> heu = lines.collect();
-        String ef = heu.get(3);
-        System.out.println("TESTIIIIIIIIIIING:  " + ef.split("\t").length);
-        String[] ug = ef.split("\t");
-        System.out.println("TESTIIIIIIIIIIING222222222:  " + ug[0].toString()+"  "+ ug[1].toString()+"  "+ ug[2].toString()+"  "+ ug[3].toString()+"  "+ ug[4].toString());
-        System.out.println("TESTIIIIIIIIIIING7777777777:  " + (ug[0].length()==3));
-        System.out.println("TESTIIIIIIIIIIING2feqewfihiwofw:  " + (ug[1].length()<1));*/
-
-        return languages;// IMPLEMENT ME
+                .mapToPair(y-> new Tuple2<>(y[1], y[2])).distinct();
+        return languages;
     }
 
 }
