@@ -6,7 +6,7 @@ In this document, we will display all the results that we have obtained during t
 
 
 **Exercise 3**
-
+"""
 -------------------------------------------
 Time: 1583926080000 ms
 -------------------------------------------
@@ -96,11 +96,13 @@ Time: 1583926180000 ms
 (Lithuanian,1)
 (Chinese,9)
 ...
+"""
 **Exercise 4**
 
 Here we only include the first window and the last window to avoid repetitive information.
 
 First window
+"""
 -------------------------------------------
 Time: 1584099620000 ms
 -------------------------------------------
@@ -115,9 +117,10 @@ Time: 1584099620000 ms
 (10,Turkish)
 (9,Tagalog)
 ...
-
+"""
 
 Last window after 5 minutes
+"""
 -------------------------------------------
 Time: 1584099920000 ms
 -------------------------------------------
@@ -132,11 +135,13 @@ Time: 1584099920000 ms
 (394,Tagalog)
 (346,Turkish)
 ...
+"""
 
 **Exercise 5**
 
 We chose the japanese language, and as there was no specification we interpreted the problem counting the tweets and the retweets from each user.
-The numbers are not very high, because the program started to counting at the time we executed the program.
+The numbers are not very high, because the program started to counting at the time we executed the program. This is the result after executing the program 10min.
+"""
 -------------------------------------------
 Time: 1584290080000 ms
 -------------------------------------------
@@ -161,12 +166,12 @@ Time: 1584290080000 ms
 (3,kentomo1414)
 (3,kai_karasume)
 ...
-
+"""
 **Exercise 6**
 
 In the database we stored all the fields requested in the assignment. However, the associated tweet list instead of containing all the information of all tweets
 it only contains the tweet ID.
-
+"""
 hashtag: #COVIDー19 count: 60
 hashtag: #Covid_19 count: 14
 hashtag: #ÚltimaHora count: 7
@@ -177,6 +182,6 @@ hashtag: #Cuba count: 4
 hashtag: #quedateEnTuCasa count: 4
 hashtag: #coronaviruscolombia count: 3
 hashtag: #Coronavirus, count: 3
-
+"""
 
 
