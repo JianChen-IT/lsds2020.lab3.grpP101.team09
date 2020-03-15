@@ -1,6 +1,6 @@
 **Introduction**
 
-In this document, we will display all the results that we have obtained during the lab. In exercise 5, we will also attach how did we understand the problem, because we think that the statement is a bit ambiguous.
+<p align = justify>In this document, we will display all the results that we have obtained during the lab. In exercise 5, we will also attach how did we understand the problem, because we think that the statement is a bit ambiguous.</p>
 
 **RESULTS**
 
@@ -99,7 +99,7 @@ Time: 1583926180000 ms
 ``` 
 **Exercise 4**
 
-Here we only include the first window and the last window to avoid repetitive information.
+<p align = justify>Here we only include the first window and the last window to avoid repetitive information.</p>
 
 First window
 ``` 
@@ -139,8 +139,8 @@ Time: 1584099920000 ms
 
 **Exercise 5**
 
-We chose the japanese language, and as there was no specification we interpreted the problem counting the tweets and the retweets from each user.
-The numbers are not very high, because the program started to counting at the time we executed the program. This is the result after executing the program 10min.
+<p align = justify>We chose the japanese language, and as there was no specification we interpreted the problem counting the tweets and the retweets from each user.
+The numbers are not very high, because the program started to counting at the time we executed the program. This is the result after executing the program 10min.</p>
 ``` 
 -------------------------------------------
 Time: 1584290080000 ms
@@ -169,8 +169,8 @@ Time: 1584290080000 ms
 ``` 
 **Exercise 6**
 
-In the database we stored all the fields requested in the assignment. However, the associated tweet list instead of containing all the information of all tweets
-it only contains the tweet ID.
+<p align = justify>In the database we stored all the fields requested in the assignment. However, the associated tweet list instead of containing all the information of all tweets
+it only contains the tweet ID.</p>
 ``` 
 hashtag: #COVIDー19 count: 60
 hashtag: #Covid_19 count: 14
